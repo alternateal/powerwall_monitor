@@ -30,7 +30,7 @@ services:
               target: /etc/telegraf/telegraf.conf
               read_only: true
         extra_hosts:
-            - "powerwall: 192.168.91.1"
+            - "powerwall: 192.168.1.244"
         depends_on:
             - influxdb
 
