@@ -115,7 +115,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT \"mean_load_instant_power\" FROM \"http\" WHERE $timeFilter tz('Australia/Adelaide')",
+          "query": "SELECT \"mean_load_instant_power\" FROM \"http\" WHERE $timeFilter tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -134,7 +134,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "Solar Energy",
@@ -168,7 +168,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "Powerwall",
@@ -204,7 +204,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "Grid Usage",
@@ -227,7 +227,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(from_grid) - mean(to_grid) FROM autogen.http WHERE $timeFilter GROUP BY time(5m) tz('Australia/Adelaide')",
+          "query": "SELECT mean(from_grid) - mean(to_grid) FROM autogen.http WHERE $timeFilter GROUP BY time(5m) tz('Europe/London')",
           "rawQuery": true,
           "refId": "D",
           "resultFormat": "time_series",
@@ -246,7 +246,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "Charge",
@@ -294,7 +294,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "datasource": "Sun and Moon",
@@ -399,7 +399,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT last(\"percentage\")  /0.95 - 5/0.95 FROM \"http\" WHERE $timeFilter tz('Australia/Adelaide')",
+          "query": "SELECT last(\"percentage\")  /0.95 - 5/0.95 FROM \"http\" WHERE $timeFilter tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -424,7 +424,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "timeFrom": null,
@@ -501,7 +501,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT  (1+from_solar/abs(from_solar))*from_solar/2  FROM (SELECT integral(solar)/1000/3600 - integral(to_pw)/1000/3600 - integral(to_grid)/1000/3600  AS from_solar FROM autogen.http WHERE  $timeFilter tz('Australia/Adelaide'))",
+          "query": "SELECT  (1+from_solar/abs(from_solar))*from_solar/2  FROM (SELECT integral(solar)/1000/3600 - integral(to_pw)/1000/3600 - integral(to_grid)/1000/3600  AS from_solar FROM autogen.http WHERE  $timeFilter tz('Europe/London'))",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -520,7 +520,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "From Powerwall",
@@ -551,7 +551,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "From Grid",
@@ -582,7 +582,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "timeFrom": null,
@@ -656,7 +656,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "kwh",
-          "query": "SELECT sum(\"solar\")   * 0.179 FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) tz('Australia/Adelaide')",
+          "query": "SELECT sum(\"solar\")   * 0.179 FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -681,7 +681,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "combined",
@@ -703,7 +703,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT s + g FROM (SELECT sum(solar)  * 0.358 AS s, sum(to_grid) * 0.179 AS g FROM kwh.http WHERE  $timeFilter tz('Australia/Adelaide'))",
+          "query": "SELECT s + g FROM (SELECT sum(solar)  * 0.358 AS s, sum(to_grid) * 0.179 AS g FROM kwh.http WHERE  $timeFilter tz('Europe/London'))",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -736,7 +736,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "kwh",
-          "query": "SELECT \"from_pw\"   * 0.358 FROM \"kwh\".\"http\" WHERE $timeFilter tz('Australia/Adelaide')",
+          "query": "SELECT \"from_pw\"   * 0.358 FROM \"kwh\".\"http\" WHERE $timeFilter tz('Europe/London')",
           "rawQuery": false,
           "refId": "C",
           "resultFormat": "time_series",
@@ -757,7 +757,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": [],
@@ -784,7 +784,7 @@
       "yaxes": [
         {
           "decimals": 2,
-          "format": "currencyUSD",
+          "format": "currencyGBP",
           "label": "",
           "logBase": 1,
           "max": null,
@@ -1169,7 +1169,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT integral(\"load_instant_power\")  / 1000 / 3600 FROM \"http\" WHERE $timeFilter GROUP BY time(1h) tz('Australia/Adelaide')",
+          "query": "SELECT integral(\"load_instant_power\")  / 1000 / 3600 FROM \"http\" WHERE $timeFilter GROUP BY time(1h) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1194,7 +1194,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1282,7 +1282,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT integral(\"battery_instant_power\")  / 1000 / 3600 FROM \"http\" WHERE (\"battery_instant_power\" > 0) AND $timeFilter tz('Australia/Adelaide')",
+          "query": "SELECT integral(\"battery_instant_power\")  / 1000 / 3600 FROM \"http\" WHERE (\"battery_instant_power\" > 0) AND $timeFilter tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1307,7 +1307,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1420,7 +1420,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1534,7 +1534,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1624,7 +1624,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT integral(\"battery_instant_power\")  / -1000 / 3600 FROM \"http\" WHERE (\"battery_instant_power\" <= 0) AND $timeFilter GROUP BY time(1h) tz('Australia/Adelaide')",
+          "query": "SELECT integral(\"battery_instant_power\")  / -1000 / 3600 FROM \"http\" WHERE (\"battery_instant_power\" <= 0) AND $timeFilter GROUP BY time(1h) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1649,7 +1649,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1737,7 +1737,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "autogen",
-          "query": "SELECT integral(\"site_instant_power\",1m)  / -1000 / 3600 * 60 FROM \"http\" WHERE (\"site_instant_power\" < 0) AND $timeFilter GROUP BY time(1h) tz('Australia/Adelaide')",
+          "query": "SELECT integral(\"site_instant_power\",1m)  / -1000 / 3600 * 60 FROM \"http\" WHERE (\"site_instant_power\" < 0) AND $timeFilter GROUP BY time(1h) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1762,7 +1762,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": "",
@@ -1856,7 +1856,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "kwh",
-          "query": "SELECT sum(\"home\") FROM \"kwh\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Australia/Adelaide')",
+          "query": "SELECT sum(\"home\") FROM \"kwh\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1875,7 +1875,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": [],
@@ -2004,7 +2004,7 @@
               "value": "0"
             }
           ],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": [],
@@ -2127,7 +2127,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": [],
@@ -2240,7 +2240,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "kwh",
-          "query": "SELECT sum(\"from_grid\") FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Australia/Adelaide')",
+          "query": "SELECT sum(\"from_grid\") FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Europe/London')",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -2259,7 +2259,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         },
         {
           "alias": "To Grid",
@@ -2280,7 +2280,7 @@
           "measurement": "http",
           "orderByTime": "ASC",
           "policy": "kwh",
-          "query": "SELECT sum(\"to_grid\")  * -1 FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Australia/Adelaide')",
+          "query": "SELECT sum(\"to_grid\")  * -1 FROM \"daily\".\"http\" WHERE $timeFilter GROUP BY time(1d) fill(0) tz('Europe/London')",
           "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
@@ -2305,7 +2305,7 @@
             ]
           ],
           "tags": [],
-          "tz": "Australia/Adelaide"
+          "tz": "Europe/London"
         }
       ],
       "thresholds": [],
